@@ -11,8 +11,8 @@ import ContactSection from "@/components/section/contact-section";
 import HackathonsSection from "@/components/section/hackathons-section";
 import ProjectsSection from "@/components/section/projects-section";
 import WorkSection from "@/components/section/work-section";
+import LeadershipSection from "@/components/section/leadership-section";
 import GallerySection from "@/components/section/gallery-section";
-import BlogSection from "@/components/section/blog-section";
 import {
   ArrowUpRight,
   BadgeCheck,
@@ -25,38 +25,6 @@ import { RealTimeClock } from "@/components/real-time-clock";
 import { GithubContributions } from "@/components/section/github-contributions"
 
 const BLUR_FADE_DELAY = 0.04;
-
-const homepageTechStackAI = [
-  { name: "Python", icon: "https://cdn.simpleicons.org/python" },
-  { name: "Go Lang", icon: "https://cdn.simpleicons.org/go" },
-  { name: "React.js", icon: "https://cdn.simpleicons.org/react" },
-  { name: "Ionic", icon: "https://cdn.simpleicons.org/ionic" },
-  { name: "FastAPI", icon: "https://cdn.simpleicons.org/fastapi" },
-  { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript" },
-];
-
-const homepageTechStackSoftware = [
-  { name: "JavaScript", icon: "https://cdn.simpleicons.org/javascript" },
-  { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs" },
-  { name: "Angular.js", icon: "https://cdn.simpleicons.org/angular" },
-  { name: "PostgreSQL", icon: "https://cdn.simpleicons.org/postgresql" },
-  { name: "Docker", icon: "https://cdn.simpleicons.org/docker" },
-];
-
-const homepageHardSkills = [
-  { name: "Frontend Engineering (React.js / Next.js)", level: "intermediate" },
-  { name: "TypeScript & JavaScript", level: "intermediate" },
-  { name: "Go (Golang) Backend Development", level: "intermediate" },
-  { name: "RESTful APIs & Microservices", level: "intermediate" },
-  // { name: "DevOps & Cloud Fundamentals (Docker / AWS basics)", level: "intermediate", },
-];
-
-const levelColors: Record<string, string> = {
-  expert: "border-green-500/50 ring-green-500/20",
-  advanced: "border-blue-500/50 ring-blue-500/20",
-  intermediate: "border-amber-500/50 ring-amber-500/20",
-  beginner: "border-gray-500/50 ring-gray-500/20",
-};
 
 export default function Page() {
   const { t, lang } = useTranslation();
@@ -104,7 +72,11 @@ export default function Page() {
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
               <div className="relative inline-block w-fit group/avatar">
                 <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
-                  <AvatarImage alt={data.name} src={data.avatarUrl} />
+                  <AvatarImage
+                        alt={data.name}
+                        src={data.avatarUrl}
+                        className="scale-140 object-cover"
+                      />
                   <AvatarFallback>{data.initials}</AvatarFallback>
                 </Avatar>
                 <Link
@@ -139,6 +111,16 @@ export default function Page() {
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
             <WorkSection />
+          </BlurFade>
+        </div>
+      </section>
+      <section id="leadership">
+        <div className="flex min-h-0 flex-col gap-y-6">
+          <BlurFade delay={BLUR_FADE_DELAY * 6.5}>
+            <h2 className="text-xl font-bold">{t.leadershipExperience}</h2>
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 7}>
+            <LeadershipSection />
           </BlurFade>
         </div>
       </section>
@@ -227,7 +209,7 @@ export default function Page() {
                 {t.techStack}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {homepageTechStackAI.map((skill) => (
+                {data.techStack.map((skill: any) => (
                   <div
                     key={skill.name}
                     className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center gap-2"
@@ -236,24 +218,7 @@ export default function Page() {
                       <img
                         src={skill.icon}
                         alt={skill.name}
-                        className="size-4 rounded overflow-hidden object-contain dark:invert"
-                      />
-                    )}
-                    <span className="text-foreground text-sm font-medium">
-                      {skill.name}
-                    </span>
-                  </div>
-                ))}
-                {homepageTechStackSoftware.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center gap-2"
-                  >
-                    {skill.icon && (
-                      <img
-                        src={skill.icon}
-                        alt={skill.name}
-                        className="size-4 rounded overflow-hidden object-contain dark:invert"
+                        className="size-4 rounded overflow-hidden object-contain"
                       />
                     )}
                     <span className="text-foreground text-sm font-medium">
@@ -298,28 +263,6 @@ export default function Page() {
                 {t.hardSkills}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {homepageHardSkills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className={`border bg-background ${levelColors[skill.level] || "border-border ring-border/20"} ring-2 rounded-xl h-8 w-fit px-4 flex items-center gap-2 transition-colors duration-300`}
-                  >
-                    <span className="text-foreground text-sm font-medium">
-                      {skill.name === "Data Science"
-                        ? t.dataScience
-                        : skill.name === "Machine Learning"
-                          ? t.machineLearning
-                          : skill.name === "Deep Learning"
-                            ? t.deepLearning
-                            : skill.name === "NLP"
-                              ? t.nlp
-                              : skill.name === "Full Stack Developer"
-                                ? t.fullStackDeveloper
-                                : skill.name === "System Architecture"
-                                  ? t.systemArchitecture
-                                  : skill.name}
-                    </span>
-                  </div>
-                ))}
               </div>
             </div>
           </BlurFade>
@@ -371,14 +314,9 @@ export default function Page() {
           <GallerySection interactive={false} />
         </BlurFade>
       </section>
-      <section id="blog">
-        <BlurFade delay={BLUR_FADE_DELAY * 15.5}>
-          <BlogSection />
-        </BlurFade>
-      </section>
       <section id="github">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <GithubContributions username="itsayu" />
+          <GithubContributions username="saood7" />
         </BlurFade>
       </section>
       <section id="contact">

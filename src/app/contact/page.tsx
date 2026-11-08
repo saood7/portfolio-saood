@@ -5,6 +5,7 @@ import { DATA } from "@/data/resume";
 import Link from "next/link";
 import { ChevronLeft, Mail, Github, Linkedin, Instagram, MessageSquare, Database, Twitter } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
+import { gmailComposeUrl } from "@/lib/gmail-compose";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -45,7 +46,11 @@ export default function ContactPage() {
         },
         {
             name: "Email",
-            url: `mailto:${data.contact.email}?subject=${encodeURIComponent("Inquiry regarding your Portfolio / Collaboration Opportunity")}&body=${encodeURIComponent("Dear Ayush Kumar Tiwari,\n\nI recently viewed your portfolio and I am very impressed with your background in AI and Software Engineering.\n\nI would love to discuss a potential opportunity or collaboration with you regarding [insert topic here].\n\nLooking forward to hearing from you.\n\nBest regards,\n[Your Name]\n[Your Company/Organization]")}`,
+            url: gmailComposeUrl(
+                data.contact.email,
+                "Message from my portfolio",
+                "Hello Saood,\n\nI found your portfolio and would like to get in touch.\n\nBest regards,\n[Your Name]"
+            ),
             icon: Mail,
             color: "group-hover:text-[#EA4335]",
         },

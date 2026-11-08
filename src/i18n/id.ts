@@ -12,6 +12,7 @@ export const id: TranslationKeys = {
     // Sections
     about: "Tentang",
     workExperience: "Pengalaman Kerja",
+    leadershipExperience: "Pengalaman Kepemimpinan & Organisasi",
     education: "Pendidikan",
     skills: "Keahlian",
     projects: "Proyek",

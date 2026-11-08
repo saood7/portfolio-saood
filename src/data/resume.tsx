@@ -13,6 +13,7 @@ import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
 import { portfolioDataEn } from "@/data/portfolio-en";
 import { PortfolioData, TechStackItem, Experience, Education, Project, Achievement, SocialLink } from "@/types";
+import { gmailComposeUrl } from "@/lib/gmail-compose";
 
 // Helper: format date string to readable month/year
 function formatDateRange(startDate: string, lang: "en" | "id", endDate?: string, isOngoing?: boolean): { start: string; end?: string } {
@@ -112,7 +113,7 @@ const buildData = (p: PortfolioData, lang: "en" | "id") => {
           ? [{ type: lang === "en" ? "Source" : "Sumber", href: proj.repoUrl, icon: <Icons.github className="size-3" /> }]
           : []),
       ],
-      image: "",
+      image: proj.images?.[0] || "",
       video: "",
       images: proj.images || [],
       slug: proj.slug,
@@ -198,13 +199,13 @@ const buildData = (p: PortfolioData, lang: "en" | "id") => {
       social: {
         GitHub: {
           name: "GitHub",
-          url: github?.url || "https://github.com/itsayu",
+          url: github?.url || "https://github.com/saood7",
           icon: Icons.github,
           navbar: true,
         },
         LinkedIn: {
           name: "LinkedIn",
-          url: linkedin?.url || "https://linkedin.com/in/itsayu",
+          url: linkedin?.url || "https://linkedin.com/in/saood7",
           icon: Icons.linkedin,
           navbar: true,
         },
@@ -222,7 +223,11 @@ const buildData = (p: PortfolioData, lang: "en" | "id") => {
         },
         email: {
           name: "Send Email",
-          url: `mailto:${p.personal.email}`,
+          url: gmailComposeUrl(
+            p.personal.email,
+            "Message from my portfolio",
+            "Hello Saood,\n\nI found your portfolio and would like to get in touch.\n\nBest regards,\n[Your Name]"
+          ),
           icon: Icons.email,
           navbar: false,
         },

@@ -183,7 +183,7 @@ export interface PortfolioData {
     softSkills: SoftSkill[];
     tools: Tool[];
     faqs: FAQ[];
-    blogs: BlogPost[];
+    // blogs: BlogPost[];
     gallery: GalleryItem[];
 }
 

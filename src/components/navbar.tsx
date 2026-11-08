@@ -12,6 +12,7 @@ import {
 import { DATA } from "@/data/resume";
 import { Icons } from "@/components/icons";
 import { useTranslation } from "@/i18n/context";
+import { gmailComposeUrl } from "@/lib/gmail-compose";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -171,7 +172,13 @@ export default function Navbar() {
           <Tooltip>
             <TooltipTrigger asChild>
               <a
-                href={`mailto:${data.contact.email}?subject=${encodeURIComponent(lang === "en" ? "Inquiry regarding your Portfolio / Collaboration Opportunity" : "Pertanyaan mengenai Portofolio Anda / Peluang Kolaborasi")}&body=${encodeURIComponent(lang === "en" ? "Dear Ayush Kumar Tiwari,\n\nI recently viewed your portfolio and I am very impressed with your background in AI and Software Engineering.\n\nI would love to discuss a potential opportunity or collaboration with you regarding [insert topic here].\n\nLooking forward to hearing from you.\n\nBest regards,\n[Your Name]\n[Your Company/Organization]" : "Halo Ayush Kumar Tiwari,\n\nSaya baru saja melihat portofolio Anda dan saya sangat terkesan dengan latar belakang Anda di bidang AI dan Rekayasa Perangkat Lunak.\n\nSaya ingin mendiskusikan peluang atau kolaborasi potensial dengan Anda mengenai [masukkan topik di sini].\n\nMenunggu kabar dari Anda.\n\nHormat saya,\n[Nama Anda]\n[Perusahaan/Organisasi Anda]")}`}
+                href={gmailComposeUrl(
+                  data.contact.email,
+                  lang === "en" ? "Message from my portfolio" : "Pesan dari portofolio saya",
+                  lang === "en"
+                    ? "Hello Saood,\n\nI found your portfolio and would like to get in touch.\n\nBest regards,\n[Your Name]"
+                    : "Halo Saood,\n\nSaya melihat portofolio Anda dan ingin menghubungi Anda.\n\nSalam,\n[Nama Anda]"
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
               >

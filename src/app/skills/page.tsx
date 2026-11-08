@@ -59,7 +59,7 @@ export default function SkillsPage() {
                             key={tech.name}
                             className="border bg-background border-border rounded-xl p-3 flex items-center gap-3 hover:ring-2 hover:ring-border/50 transition-all"
                         >
-                            {tech.icon && <img src={tech.icon} alt={tech.name} className="size-5 rounded overflow-hidden object-contain dark:invert" />}
+                            {tech.icon && <img src={tech.icon} alt={tech.name} className="size-5 rounded overflow-hidden object-contain" />}
                             <span className="text-sm font-medium text-foreground">{tech.name}</span>
                         </div>
                     ))}

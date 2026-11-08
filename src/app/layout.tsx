@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ayush | A Passionate Software Engineer",
+    default: "Saood Qureshi| A Passionate Engineer",
     template: "%s | Portfolio",
   },
   description:
@@ -36,14 +36,14 @@ export const metadata: Metadata = {
     "react",
     "nextjs",
   ],
-  authors: [{ name: "Ayush Kumar Tiwari" }],
-  creator: "Ayush Kumar Tiwari",
+  authors: [{ name: "Muhammad Saood Qureshi" }],
+  creator: "Muhammad Saood Qureshi",
   metadataBase: new URL("https://itsayuu.vercel.app"),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://itsayuu.vercel.app",
-    title: "Ayush | A Passionate Software Engineer",
+    title: "Saood Qureshi| A Passionate Software Engineer",
     description:
       "A passionate developer building digital experiences that inspire.",
     siteName: "Portfolio",
@@ -68,16 +68,7 @@ export const metadata: Metadata = {
     yandex: "",
   },
   icons: {
-    icon: [
-      {
-        url: "/Ayush.svg",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/Ayush_dark.svg",
-        media: "(prefers-color-scheme: dark)",
-      },
-    ],
+    icon: "/favicon.ico",
   },
 };
 

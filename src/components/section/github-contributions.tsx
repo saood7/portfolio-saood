@@ -9,7 +9,7 @@ interface GitHubStats {
     totalStars: number;
 }
 
-export function GithubContributions({ username = "itsayu" }: { username?: string }) {
+export function GithubContributions({ username = "saood7" }: { username?: string }) {
     const [stats, setStats] = useState<GitHubStats | null>(null);
     const [loading, setLoading] = useState(true);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
