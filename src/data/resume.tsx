@@ -238,7 +238,6 @@ const buildData = (p: PortfolioData, lang: "en" | "id") => {
     projects: projectItems,
     hackathons: allHackathons,
     gallery: p.gallery,
-    blogs: p.blogs,
     faqs: p.faqs,
     tools: p.tools,
     softSkills: p.softSkills,

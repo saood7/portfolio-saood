@@ -21,6 +21,8 @@ export default function WorkSection() {
   const work = (portfolioData.experiences ?? []).find(
     (item) => item.company.toLowerCase() === "venturenest"
   );
+  const responsibilities = work?.responsibilities ?? [];
+  const skills = work?.skills ?? [];
 
   if (!work) {
     return (
@@ -98,17 +100,17 @@ export default function WorkSection() {
           <AccordionContent className="p-0 ml-13 text-xs sm:text-sm text-muted-foreground">
             <p>{work.description}</p>
 
-            {work.responsibilities?.length > 0 && (
+            {responsibilities.length > 0 && (
               <ul className="list-disc pl-5 mt-3 space-y-1">
-                {work.responsibilities.map((item, index) => (
+                {responsibilities.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>
             )}
 
-            {work.skills?.length > 0 && (
+            {skills.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-3">
-                {work.skills.map((skill, index) => (
+                {skills.map((skill, index) => (
                   <span
                     key={index}
                     className="text-xs border rounded-full px-2 py-1 text-muted-foreground"

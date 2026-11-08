@@ -377,8 +377,8 @@ export const portfolioData: PortfolioData = {
       icon: "https://cdn.simpleicons.org/vercel",
       category: "devops",
     },
-    { name: "Claude", icon: "https://cdn.simpleicons.org/claude", category: "ai" },
-    { name: "ChatGPT", icon: "/icons/skills/openai.svg", category: "ai" },
+    { name: "Claude", icon: "https://cdn.simpleicons.org/claude", category: "other" },
+    { name: "ChatGPT", icon: "/icons/skills/openai.svg", category: "other" },
     { name: "v0", icon: "https://cdn.simpleicons.org/v0", category: "design" },
   ],
   faqs: [
