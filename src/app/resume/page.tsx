@@ -8,5 +8,5 @@ export default function ResumePage() {
         redirect(resumeUrl);
     }
 
-    redirect("/");
+    redirect(resumeUrl || "/resume.pdf");
 }

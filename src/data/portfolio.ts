@@ -11,7 +11,7 @@ export const portfolioData: PortfolioData = {
     location: "Mohali, Punjab, India | Srinagar, Jammu & Kashmir",
     email: "saoodqureshi4242@gmail.com",
     phone: "",
-    resumeUrl: "",
+    resumeUrl: "/resume.pdf",
     website: "",
     languages: [
       { name: "English", level: "Professional" },
