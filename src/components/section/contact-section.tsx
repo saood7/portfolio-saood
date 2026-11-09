@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { DATA } from "@/data/resume";
 import { useTranslation } from "@/i18n/context";
-import { gmailComposeUrl } from "@/lib/gmail-compose";
+import { mailtoUrl } from "@/lib/email";
 
 export default function ContactSection() {
   const { t, lang } = useTranslation();
@@ -41,9 +41,7 @@ export default function ContactSection() {
           </Link>{" "}
           {t.contactOr}{" "}
           <a
-            href={gmailComposeUrl(data.contact.email, t.contactSubject, t.contactBody)}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={mailtoUrl(data.contact.email, t.contactSubject, t.contactBody)}
             className="text-blue-500 hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
           >
             {t.contactEmail}

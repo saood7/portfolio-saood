@@ -5,7 +5,7 @@ import { DATA } from "@/data/resume";
 import Link from "next/link";
 import { ChevronLeft, Mail, Github, Linkedin, Instagram, MessageSquare, Database, Twitter } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
-import { gmailComposeUrl } from "@/lib/gmail-compose";
+import { mailtoUrl } from "@/lib/email";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -46,7 +46,7 @@ export default function ContactPage() {
         },
         {
             name: "Email",
-            url: gmailComposeUrl(
+            url: mailtoUrl(
                 data.contact.email,
                 "Message from my portfolio",
                 "Hello Saood,\n\nI found your portfolio and would like to get in touch.\n\nBest regards,\n[Your Name]"
@@ -84,8 +84,8 @@ export default function ContactPage() {
                         <BlurFade key={link.name} delay={BLUR_FADE_DELAY * 3 + idx * 0.1}>
                             <Link
                                 href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                target={link.name === "Email" ? undefined : "_blank"}
+                                rel={link.name === "Email" ? undefined : "noopener noreferrer"}
                                 className="group flex items-center gap-4 p-4 rounded-2xl border border-border bg-background hover:bg-muted/50 hover:border-border/80 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-all duration-300"
                             >
                                 <div className={`p-2.5 rounded-xl bg-muted group-hover:bg-background border border-transparent group-hover:border-border transition-colors duration-300 ${link.color}`}>

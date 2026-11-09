@@ -13,7 +13,7 @@ import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
 import { portfolioDataEn } from "@/data/portfolio-en";
 import { PortfolioData, TechStackItem, Experience, Education, Project, Achievement, SocialLink } from "@/types";
-import { gmailComposeUrl } from "@/lib/gmail-compose";
+import { mailtoUrl } from "@/lib/email";
 
 // Helper: format date string to readable month/year
 function formatDateRange(startDate: string, lang: "en" | "id", endDate?: string, isOngoing?: boolean): { start: string; end?: string } {
@@ -223,7 +223,7 @@ const buildData = (p: PortfolioData, lang: "en" | "id") => {
         },
         email: {
           name: "Send Email",
-          url: gmailComposeUrl(
+          url: mailtoUrl(
             p.personal.email,
             "Message from my portfolio",
             "Hello Saood,\n\nI found your portfolio and would like to get in touch.\n\nBest regards,\n[Your Name]"
